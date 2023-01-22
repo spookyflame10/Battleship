@@ -1,0 +1,217 @@
+@font-face {
+  font-family: "Norse";
+  src: local("Norse") url("../fonts/Norse-Bold.otf");
+}
+:root {
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow2: 2px 0px 2px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 2px 10px 15px 10px rgb(0 0 0 / 0.4),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --boards: rgb(31, 30, 30);
+  --playerModal: rgb(17, 30, 31);
+  --backgroundColor: rgb(0, 0, 0);
+  --border: 1px solid rgb(255, 255, 255);
+  --hit: rgb(179, 24, 24);
+  --miss: rgb(34, 169, 81);
+  --color: white;
+}
+
+body.light {
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow2: 2px 0px 2px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 2px 10px 15px 10px rgb(0 0 0 / 0.4),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --boards: rgb(186, 184, 184);
+  --playerModal: rgb(37, 53, 55);
+  --backgroundColor: white;
+  --border: 1px solid black;
+  --hit: red;
+  --miss: rgb(71, 254, 135);
+  --color: black;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background-color: var(--backgroundColor);
+  color: var(--color);
+  font-family: "Norse";
+}
+
+.cell {
+  font-size: 20px;
+  font-weight: 900;
+  color: rgb(0, 0, 0);
+  border: var(--border);
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  justify-items: center;
+  gap: 50px;
+  width: 100vw;
+}
+.container .title {
+  padding-top: 100px;
+  font-size: 7em;
+  font-weight: 900;
+}
+.container .boards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.computer {
+  cursor: pointer;
+}
+.computer > div#cell:hover {
+  background-color: rgb(70, 187, 246);
+}
+
+.board {
+  display: grid;
+  width: calc(20vw + 220px);
+  height: calc(20vw + 220px);
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  border: var(--border);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--boards);
+}
+
+.playerModal {
+  transform: translate(-50%, -50%) scale(0);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--playerModal);
+  gap: 30px;
+  padding: 40px;
+  font-size: 25px;
+  border-radius: 20px;
+  color: white;
+}
+.playerModal .welcome {
+  font-weight: 900;
+}
+.playerModal span.ship {
+  text-decoration: underline;
+}
+.playerModal button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: rgb(182, 182, 32);
+  font-weight: 900;
+}
+.playerModal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.overlay {
+  display: none;
+  width: 100%; /* Full width */
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(37, 53, 55, 0.3);
+  align-content: center;
+}
+.overlay.active {
+  display: block;
+}
+
+.red {
+  background-color: rgb(240, 62, 13);
+}
+
+.blue {
+  background-color: rgb(70, 187, 246);
+}
+
+#gray {
+  background-color: gray;
+}
+
+#hit {
+  background-color: var(--hit);
+}
+
+#miss {
+  background-color: var(--miss);
+}
+
+.endGameModal {
+  transform: translate(-50%, -50%) scale(0);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--playerModal);
+  gap: 30px;
+  padding: 40px;
+  font-size: 25px;
+  border-radius: 20px;
+  color: white;
+}
+.endGameModal .welcome {
+  font-weight: 900;
+}
+.endGameModal span.ship {
+  text-decoration: underline;
+}
+.endGameModal button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: rgb(182, 182, 32);
+  font-weight: 900;
+}
+.endGameModal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.mode {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(36, 90, 107);
+  padding: 4px;
+  border-radius: 50px;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  color: white;
+}
+.mode .ball {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  padding: 15px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: 0;
+  transition: transform 200ms ease-in-out;
+}
+.mode.clicked {
+  color: rgb(0, 0, 0);
+  background-color: rgb(230, 230, 230);
+}
+.mode.clicked .ball {
+  transform: translateX(43px);
+}/*# sourceMappingURL=style.css.map */
