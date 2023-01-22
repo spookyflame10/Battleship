@@ -8,8 +8,8 @@
   --shadow-lg: 2px 10px 15px 10px rgb(0 0 0 / 0.4),
     0 4px 6px -4px rgb(0 0 0 / 0.1);
   --boards: rgb(31, 30, 30);
-  --playerModal: rgb(17, 30, 31);
-  --backgroundColor: rgb(0, 0, 0);
+  --playerModal: rgb(51, 69, 70);
+  --backgroundColor: rgb(95, 88, 88);
   --border: 1px solid rgb(255, 255, 255);
   --hit: rgb(179, 24, 24);
   --miss: rgb(34, 169, 81);
@@ -21,7 +21,7 @@ body.light {
   --shadow2: 2px 0px 2px rgba(0, 0, 0, 0.2);
   --shadow-lg: 2px 10px 15px 10px rgb(0 0 0 / 0.4),
     0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --boards: rgb(186, 184, 184);
+  --boards: rgb(237, 231, 231);
   --playerModal: rgb(37, 53, 55);
   --backgroundColor: white;
   --border: 1px solid black;
@@ -47,6 +47,7 @@ body {
   color: rgb(0, 0, 0);
   border: var(--border);
   box-sizing: border-box;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .container {
@@ -77,8 +78,8 @@ body {
 
 .board {
   display: grid;
-  width: calc(20vw + 220px);
-  height: calc(20vw + 220px);
+  width: calc(20vw + 150px);
+  height: calc(20vw + 150px);
   grid-template-rows: repeat(10, 1fr);
   grid-template-columns: repeat(10, 1fr);
   border: var(--border);
@@ -99,7 +100,7 @@ body {
   background-color: var(--playerModal);
   gap: 30px;
   padding: 40px;
-  font-size: 25px;
+  font-size: 35px;
   border-radius: 20px;
   color: white;
 }
@@ -109,11 +110,16 @@ body {
 .playerModal span.ship {
   text-decoration: underline;
 }
+.playerModal .boardModal {
+  width: 20vw;
+  height: 20vw;
+}
 .playerModal button {
   padding: 10px 15px;
   border-radius: 10px;
   background-color: rgb(182, 182, 32);
   font-weight: 900;
+  font-size: 20px;
 }
 .playerModal.active {
   transform: translate(-50%, -50%) scale(1);
@@ -138,7 +144,7 @@ body {
 }
 
 .blue {
-  background-color: rgb(70, 187, 246);
+  background-color: rgb(90, 197, 255);
 }
 
 #gray {

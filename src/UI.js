@@ -44,9 +44,9 @@ const UI = (() => {
     };
   }
 
-  function clearGameBoard(board) {
-    // board.innerHTML = '';
-  }
+  // function clearGameBoard(board) {
+  //   // board.innerHTML = '';
+  // }
   function displayShips(gamebd, name) {
     for (let i = 0; i < gamebd.size; i++) {
       for (let j = 0; j < gamebd.size; j++) {
